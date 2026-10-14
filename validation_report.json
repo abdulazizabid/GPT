@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "tests": [
+    "Notebook nbformat schema and all Python cell syntax",
+    "64/100 Hz BVP\u2192IBI extraction, REM label mapping, exclusion reasons",
+    "Raw CSV chunk boundaries, per-subject cache reuse, corrupt-cache recovery",
+    "V5 cache compatibility import and rejection after source signature mismatch",
+    "Model forward/backward, auxiliary gradients, gap-safe windows, exact prediction coverage",
+    "Optional teacher-correct KD and delayed consistency loss paths",
+    "Interrupted-minibatch resume, optimizer/scaler/scheduler/RNG save, completed-run reuse",
+    "Validation-only decoder, probability normalization, metrics, cluster bootstrap"
+  ],
+  "limitations": [
+    "Synthetic CPU tests only; no raw DREAMT data or pretrained weights supplied.",
+    "CUDA AMP and real-data metrics were not executed on this CPU host."
+  ],
+  "torch": "2.6.0+cpu",
+  "full_notebook_execution": {
+    "status": "passed",
+    "tests": [
+      "Created compatible legacy config, policies, raw signatures and six-epoch caches for all 100 subjects",
+      "Actual notebook cells completed: both candidates, checkpointing, model selection, decoder, plots, test metrics, paired V5 comparison",
+      "Second complete notebook pass reused validated caches, completed models, decoder and test predictions"
+    ],
+    "seconds": 10.144848108291626,
+    "torch": "2.6.0+cpu",
+    "notebook_sha": "34aca5cfdef3878fc2af4caaac4f4c3445b2fcca7c67131350dd9ceb4e50097d",
+    "limitations": [
+      "Synthetic CPU fixtures only; no actual DREAMT physiological data, pretrained weights or CUDA execution."
+    ]
+  },
+  "notebook_sha256": "34aca5cfdef3878fc2af4caaac4f4c3445b2fcca7c67131350dd9ceb4e50097d"
+}
