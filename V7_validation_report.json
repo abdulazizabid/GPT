@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "notebook_sha256": "6f8dedc858b43e82e3d99d54d9d18bbed1ef10a2781b9ddf4d5409c35d81cb0c",
+  "scope": "Synthetic CPU execution and code checks only; no real DREAMT score claims",
+  "torch": "2.6.0+cpu",
+  "cuda_execution_verified": false,
+  "real_dreamt_training_verified": false,
+  "preprocessing_checks": [
+    "Native64 wearable preparation; separate valid-label and temporal-context masks",
+    "NREM substage transitions retained; cross-class mixed/preparation epochs retained without scoring",
+    "PSG context vs supervision masks; chin EMG amplitude retained",
+    "True timestamp gaps, cache reuse/rebuild, source disagreement guard, local mmap mirrors"
+  ],
+  "training_checks": [
+    "all chronological core epochs predicted exactly once",
+    "unscored wearable context retained and excluded from loss",
+    "unscored quality PSG retained and excluded from supervision",
+    "interrupted completed-update resume exactly reproduces same-batch model",
+    "microbatch 2 to 1 keeps run identity, effective updates and exact remaining window coverage",
+    "KD correct-class gate and OOF-validity mask",
+    "KD warmup disables KL",
+    "runtime OOF fold exclusion, each held person once and wearable-only no-KD target mask",
+    "OOF held-person exclusion and train-only normalization source guards",
+    "missing selected weights preserves completed checkpoint and retrains",
+    "missing selection CSV regenerated from selected weights without optimizer steps",
+    "corrupt resume checkpoint preserved and repaired by retraining",
+    "changed OOF dependency identity preserves and retrains distilled stage"
+  ],
+  "full_pipeline_checks": [
+    "OOF provenance and targets",
+    "genuine KD gradients",
+    "supervised reference",
+    "two distilled seeds",
+    "ensemble candidate",
+    "temperature-only calibration",
+    "full timeline plus masked metrics",
+    "both historical matched comparisons",
+    "target attainment",
+    "report ZIP"
+  ],
+  "reuse": {
+    "optimizer_steps_first_pass": 639,
+    "optimizer_steps_second_pass": 0,
+    "protected_artifact_count": 53,
+    "weight_decoder_prediction_hashes_and_mtimes_unchanged": true,
+    "deleted_oof_regenerated_identically": "S003.csv",
+    "deleted_selection_logits_regenerated_identically": "students/distilled_seed_42/selection_logits.csv"
+  },
+  "genuine_kd_gradient_checked": true,
+  "limitations": [
+    "Raw preprocessing tested on generated signals; full pipeline tested on small synthetic fixtures.",
+    "CUDA hardware was unavailable. Real DREAMT macro F1/accuracy/REM F1 are unmeasured.",
+    "A70%+macroF1 target is not guaranteed. Compare input specification and matched epoch cohorts."
+  ],
+  "recovery_checks_verified": true
+}
